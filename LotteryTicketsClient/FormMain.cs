@@ -219,5 +219,10 @@ namespace LotteryTicketsClient
         {
             refreshTable();
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            MessageBox.Show("Роман Рыбаков, 22.08.2021");
+        }
     }
 }
