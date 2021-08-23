@@ -139,7 +139,8 @@ namespace LotteryTicketsClient.BLL
 
             if ((ticket.choosedNumbersCount != ticket.choosedNumbers.Count))
             {
-                throw new Exception("Количество выбранных чисел не совпадает с количеством чисел в массиве");
+                throw new Exception("Количество выбранных чисел не " +
+                    "совпадает с количеством чисел в массиве");
 
             }
         }
@@ -152,7 +153,10 @@ namespace LotteryTicketsClient.BLL
 
             var json = new JavaScriptSerializer().Serialize(ticketDTO);
             
-            var response = this.httpRequest.put(ConfigurationManager.AppSettings["host"].ToString() + "api/ticket/add/", json);
+            var response = this.httpRequest.put(
+                ConfigurationManager.AppSettings["host"].ToString() 
+                + "api/ticket/add/", json);
+
             Debug.WriteLine(response);
         }
 
@@ -160,7 +164,9 @@ namespace LotteryTicketsClient.BLL
         {
             List<Ticket> tickets = new List<Ticket>();
 
-            var response = this.httpRequest.get(ConfigurationManager.AppSettings["host"].ToString() + "api/ticket/get/");
+            var response = this.httpRequest.get(
+                ConfigurationManager.AppSettings["host"].ToString() 
+                + "api/ticket/get/");
 
             tickets = new JavaScriptSerializer().Deserialize<List<Ticket>>(response);
 
@@ -175,14 +181,18 @@ namespace LotteryTicketsClient.BLL
 
             var json = new JavaScriptSerializer().Serialize(ticketDTO);
 
-            var response = this.httpRequest.patch(ConfigurationManager.AppSettings["host"].ToString() + "api/ticket/edit/", json);
+            var response = this.httpRequest.patch(
+                ConfigurationManager.AppSettings["host"].ToString() 
+                + "api/ticket/edit/", json);
 
         }
 
         public void delete()
         {
-            var response = this.httpRequest.delete(ConfigurationManager.AppSettings["host"].ToString() + "api/ticket/delete/" + ticket.number);
-            Debug.WriteLine(response);
+            var response = this.httpRequest.delete(
+                ConfigurationManager.AppSettings["host"].ToString() 
+                + "api/ticket/delete/" + ticket.number);
+
         }
     }
 }

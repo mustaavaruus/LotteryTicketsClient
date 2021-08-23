@@ -39,7 +39,7 @@ namespace LotteryTicketsClient
 
                 MessageBox.Show("Количество выбранных чисел должно быть в диапазоне от (" +
                     Constants.MIN_CHOOSED_NUMBERS_COUNT +
-                    "до " +
+                    " до " +
                     Constants.MAX_CHOOSED_NUMBERS_COUNT +
                     ")");
 
@@ -50,7 +50,7 @@ namespace LotteryTicketsClient
             {
                 MessageBox.Show("Количество выбранных чисел должно быть в диапазоне от (" +
                     Constants.MIN_CHOOSED_NUMBERS_COUNT +
-                    "до " +
+                    " до " +
                     Constants.MAX_CHOOSED_NUMBERS_COUNT +
                     ")");
 
