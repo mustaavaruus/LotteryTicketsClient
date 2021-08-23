@@ -163,6 +163,7 @@ namespace LotteryTicketsClient
                 var rowIndex = dataGridViewTable.CurrentCell.RowIndex;
 
                 var guidStr = getCellValueByIndexes(rowIndex, 0);
+
                 if (String.IsNullOrEmpty(guidStr))
                 {
                     return;
@@ -222,7 +223,7 @@ namespace LotteryTicketsClient
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            MessageBox.Show("Роман Рыбаков, 22.08.2021");
+            MessageBox.Show("by Роман Рыбаков, 22.08.2021");
         }
     }
 }

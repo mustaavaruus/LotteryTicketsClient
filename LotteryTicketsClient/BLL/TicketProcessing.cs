@@ -1,5 +1,6 @@
 ﻿using LotteryTicketsClient.Models;
 using LotteryTicketsClient.Requests;
+using LotteryTicketsClient.Utils;
 using LotteryTicketsV1.DTO;
 using Mapster;
 using Nancy.Json;
@@ -13,11 +14,7 @@ namespace LotteryTicketsClient.BLL
 {
     public class TicketProcessing
     {
-        private const int MIN_CHOOSED_NUMBERS_COUNT = 6;
-        private const int MAX_CHOOSED_NUMBERS_COUNT = 17;
-
-        private const int MIN_CIRCULATION_NUMBER = 1;
-        private const int MAX_CIRCULATION_NUMBER = 65535;
+        
 
         private CustomHttpRequest httpRequest;
 
@@ -30,7 +27,7 @@ namespace LotteryTicketsClient.BLL
 
         public void checkValidForSaving()
         {
-            if (ticket.circulation < MIN_CIRCULATION_NUMBER) {
+            if (ticket.circulation < Constants.MIN_CIRCULATION_NUMBER) {
 
                 StringBuilder str = new StringBuilder();
                 str.Append("Указанный номер тиража ");
@@ -39,16 +36,16 @@ namespace LotteryTicketsClient.BLL
                 str.Append(")");
                 str.Append(" должен быть в диапазоне: ");
                 str.Append("(");
-                str.Append(MIN_CIRCULATION_NUMBER);
+                str.Append(Constants.MIN_CIRCULATION_NUMBER);
                 str.Append("; ");
-                str.Append(MAX_CIRCULATION_NUMBER);
+                str.Append(Constants.MAX_CIRCULATION_NUMBER);
                 str.Append(")");
 
                 throw new Exception(str.ToString());
 
             }
 
-            if (ticket.circulation > MAX_CIRCULATION_NUMBER)
+            if (ticket.circulation > Constants.MAX_CIRCULATION_NUMBER)
             {
 
                 StringBuilder str = new StringBuilder();
@@ -58,16 +55,16 @@ namespace LotteryTicketsClient.BLL
                 str.Append(")");
                 str.Append(" должен быть в диапазоне: ");
                 str.Append("(");
-                str.Append(MIN_CIRCULATION_NUMBER);
+                str.Append(Constants.MIN_CIRCULATION_NUMBER);
                 str.Append("; ");
-                str.Append(MAX_CIRCULATION_NUMBER);
+                str.Append(Constants.MAX_CIRCULATION_NUMBER);
                 str.Append(")");
 
                 throw new Exception(str.ToString());
 
             }
 
-            if (ticket.choosedNumbersCount < MIN_CHOOSED_NUMBERS_COUNT)
+            if (ticket.choosedNumbersCount < Constants.MIN_CHOOSED_NUMBERS_COUNT)
             {
                 StringBuilder str = new StringBuilder();
                 str.Append("Указанное количество выбранных чисел");
@@ -76,15 +73,15 @@ namespace LotteryTicketsClient.BLL
                 str.Append(")");
                 str.Append(" должно быть в диапазоне: ");
                 str.Append("(");
-                str.Append(MIN_CHOOSED_NUMBERS_COUNT);
+                str.Append(Constants.MIN_CHOOSED_NUMBERS_COUNT);
                 str.Append("; ");
-                str.Append(MAX_CHOOSED_NUMBERS_COUNT);
+                str.Append(Constants.MAX_CHOOSED_NUMBERS_COUNT);
                 str.Append(")");
 
                 throw new Exception(str.ToString());
             }
 
-            if (ticket.choosedNumbersCount > MAX_CHOOSED_NUMBERS_COUNT)
+            if (ticket.choosedNumbersCount > Constants.MAX_CHOOSED_NUMBERS_COUNT)
             {
                 StringBuilder str = new StringBuilder();
                 str.Append("Указанное количество выбранных чисел");
@@ -93,9 +90,9 @@ namespace LotteryTicketsClient.BLL
                 str.Append(")");
                 str.Append(" должно быть в диапазоне: ");
                 str.Append("(");
-                str.Append(MIN_CHOOSED_NUMBERS_COUNT);
+                str.Append(Constants.MIN_CHOOSED_NUMBERS_COUNT);
                 str.Append("; ");
-                str.Append(MAX_CHOOSED_NUMBERS_COUNT);
+                str.Append(Constants.MAX_CHOOSED_NUMBERS_COUNT);
                 str.Append(")");
 
                 throw new Exception(str.ToString());
@@ -106,7 +103,7 @@ namespace LotteryTicketsClient.BLL
                 throw new Exception("Массив с выбранными числами пуст");
             }
 
-            if (ticket.choosedNumbers.Count < MIN_CHOOSED_NUMBERS_COUNT)
+            if (ticket.choosedNumbers.Count < Constants.MIN_CHOOSED_NUMBERS_COUNT)
             {
                 StringBuilder str = new StringBuilder();
                 str.Append("Количество выбранных чисел в массиве ");
@@ -115,15 +112,15 @@ namespace LotteryTicketsClient.BLL
                 str.Append(")");
                 str.Append(" должно быть в диапазоне: ");
                 str.Append("(");
-                str.Append(MIN_CHOOSED_NUMBERS_COUNT);
+                str.Append(Constants.MIN_CHOOSED_NUMBERS_COUNT);
                 str.Append("; ");
-                str.Append(MAX_CHOOSED_NUMBERS_COUNT);
+                str.Append(Constants.MAX_CHOOSED_NUMBERS_COUNT);
                 str.Append(")");
 
                 throw new Exception(str.ToString());
             }
 
-            if (ticket.choosedNumbers.Count > MAX_CHOOSED_NUMBERS_COUNT)
+            if (ticket.choosedNumbers.Count > Constants.MAX_CHOOSED_NUMBERS_COUNT)
             {
                 StringBuilder str = new StringBuilder();
                 str.Append("Количество выбранных чисел в массиве ");
@@ -132,9 +129,9 @@ namespace LotteryTicketsClient.BLL
                 str.Append(")");
                 str.Append(" должно быть в диапазоне: ");
                 str.Append("(");
-                str.Append(MIN_CHOOSED_NUMBERS_COUNT);
+                str.Append(Constants.MIN_CHOOSED_NUMBERS_COUNT);
                 str.Append("; ");
-                str.Append(MAX_CHOOSED_NUMBERS_COUNT);
+                str.Append(Constants.MAX_CHOOSED_NUMBERS_COUNT);
                 str.Append(")");
 
                 throw new Exception(str.ToString());
