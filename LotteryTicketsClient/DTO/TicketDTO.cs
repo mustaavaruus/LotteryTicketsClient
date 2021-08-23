@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LotteryTicketsV1.DTO
+namespace LotteryTicketsClient.DTO
 {
     public class TicketDTO
     {

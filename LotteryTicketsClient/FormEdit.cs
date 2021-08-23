@@ -1,5 +1,6 @@
 ﻿using LotteryTicketsClient.BLL;
 using LotteryTicketsClient.Models;
+using LotteryTicketsClient.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,15 +34,26 @@ namespace LotteryTicketsClient
         private bool isValidForSave()
         {
 
-            if (textBoxChoosedNumbers.Text.Split(" ").Length < 6)
+            if (textBoxChoosedNumbers.Text.Split(" ").Length < Constants.MIN_CHOOSED_NUMBERS_COUNT)
             {
-                MessageBox.Show("Количество выбранных чисел должно быть в диапазоне от (6 до 17)");
+
+                MessageBox.Show("Количество выбранных чисел должно быть в диапазоне от (" +
+                    Constants.MIN_CHOOSED_NUMBERS_COUNT +
+                    "до " +
+                    Constants.MAX_CHOOSED_NUMBERS_COUNT +
+                    ")");
+
                 return false;
             }
 
-            if (textBoxChoosedNumbers.Text.Split(" ").Length > 17)
+            if (textBoxChoosedNumbers.Text.Split(" ").Length > Constants.MAX_CHOOSED_NUMBERS_COUNT)
             {
-                MessageBox.Show("Количество выбранных чисел должно быть в диапазоне от (6 до 17)");
+                MessageBox.Show("Количество выбранных чисел должно быть в диапазоне от (" +
+                    Constants.MIN_CHOOSED_NUMBERS_COUNT +
+                    "до " +
+                    Constants.MAX_CHOOSED_NUMBERS_COUNT +
+                    ")");
+
                 return false;
             }
 
@@ -66,12 +78,12 @@ namespace LotteryTicketsClient
 
                     TicketProcessing ticketProcessing = new TicketProcessing(ticket);
 
-                    if (this.mode.Equals("ADD"))
+                    if (this.mode.Equals(Constants.MODE_ADD))
                     {
                         ticketProcessing.add();
                     }
 
-                    if (this.mode.Equals("UPDATE"))
+                    if (this.mode.Equals(Constants.MODE_EDIT))
                     {
 
                         ticket.number = Guid.Parse(textBoxNumber.Text);
@@ -121,7 +133,12 @@ namespace LotteryTicketsClient
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(textBoxCirculation.Text, "[^0-9]"))
             {
-                MessageBox.Show("Разрешено вводить только числа от 1 до 65535");
+                MessageBox.Show("Разрешено вводить только" +
+                    " числа от " +
+                    Constants.MIN_CIRCULATION_NUMBER +
+                    " до " +
+                    Constants.MAX_CIRCULATION_NUMBER
+                    );
                 textBoxCirculation.Text = textBoxCirculation.Text.Remove(textBoxCirculation.Text.Length - 1);
                 return;
             }
@@ -133,8 +150,13 @@ namespace LotteryTicketsClient
 
             var inputNumber = Int32.Parse(textBoxCirculation.Text);
 
-            if ((inputNumber < 1) || (inputNumber > 65535)) {
-                MessageBox.Show("Разрешено вводить только числа от 1 до 65535");
+            if ((inputNumber < Constants.MIN_CIRCULATION_NUMBER) || (inputNumber > Constants.MAX_CIRCULATION_NUMBER)) {
+                MessageBox.Show("Разрешено вводить только" +
+                    " числа от " +
+                    Constants.MIN_CIRCULATION_NUMBER +
+                    " до " +
+                    Constants.MAX_CIRCULATION_NUMBER
+                    );
                 textBoxCirculation.Text = textBoxCirculation.Text.Remove(textBoxCirculation.Text.Length - 1);
                 return;
             }

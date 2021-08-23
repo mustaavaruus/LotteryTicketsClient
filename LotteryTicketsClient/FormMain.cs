@@ -1,5 +1,6 @@
 ﻿using LotteryTicketsClient.BLL;
 using LotteryTicketsClient.Models;
+using LotteryTicketsClient.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -102,7 +103,7 @@ namespace LotteryTicketsClient
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            FormEdit formEdit = new FormEdit("ADD");
+            FormEdit formEdit = new FormEdit(Constants.MODE_ADD);
             formEdit.Show();
             FormEdit.instance.tbNumber.Enabled = false;
 
@@ -123,7 +124,7 @@ namespace LotteryTicketsClient
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            FormEdit formEdit = new FormEdit("UPDATE");
+            FormEdit formEdit = new FormEdit(Constants.MODE_EDIT);
             formEdit.Show();
             FormEdit.instance.tbNumber.Enabled = true;
 
