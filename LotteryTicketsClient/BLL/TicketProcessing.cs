@@ -1,7 +1,7 @@
 ﻿using LotteryTicketsClient.Models;
 using LotteryTicketsClient.Requests;
 using LotteryTicketsClient.Utils;
-using LotteryTicketsV1.DTO;
+using LotteryTicketsClient.DTO;
 using Mapster;
 using Nancy.Json;
 using System;
