@@ -87,7 +87,7 @@ namespace LotteryTicketsClient
                     {
 
                         ticket.number = Guid.Parse(textBoxNumber.Text);
-                        ticketProcessing.update();
+                        ticketProcessing.edit();
                     }
 
                     this.Close();

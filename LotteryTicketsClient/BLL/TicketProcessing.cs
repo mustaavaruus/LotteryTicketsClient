@@ -173,7 +173,7 @@ namespace LotteryTicketsClient.BLL
             return tickets;
         }
 
-        public void update()
+        public void edit()
         {
             this.checkValidForSaving();
 
